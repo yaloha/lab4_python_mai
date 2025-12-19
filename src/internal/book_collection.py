@@ -28,3 +28,9 @@ class BookCollection:
         """Удаляет книгу из коллекции"""
         if book in self._books:
             self._books.remove(book)
+
+    def __eq__(self, other) -> bool:
+        """Сравнение коллекций книг"""
+        if not isinstance(other, BookCollection):
+            return False
+        return self._books == other._books

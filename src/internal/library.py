@@ -79,6 +79,7 @@ class Library:
             self._indexes.add_book(book)
 
     def __eq__(self, other):
+        """Сравнение коллекций книг"""
         if not isinstance(other, Library):
             return False
         return (self._books == other._books) and (self._indexes == other._indexes)

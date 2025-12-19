@@ -84,3 +84,14 @@ class IndexDict:
                 del self.genre_index[book.genre]
 
         return True
+
+    def __eq__(self, other) -> bool:
+        """Сравнение словарей индексов"""
+        if not isinstance(other, IndexDict):
+            return False
+        return (
+                self.isbn_index == other.isbn_index and
+                self.author_index == other.author_index and
+                self.year_index == other.year_index and
+                self.genre_index == other.genre_index
+        )
