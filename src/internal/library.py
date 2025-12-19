@@ -1,4 +1,8 @@
-from src.internal import Book, IndexDict, BookCollection
+from .books import Book
+from .index_dict import IndexDict
+from .book_collection import BookCollection
+
+
 class Library:
     def __init__(self) -> None:
         """Инициализация библиотеки с коллекцией книг и индексами"""

@@ -1,4 +1,4 @@
-from src.internal import Book
+from .books import Book
 
 
 class IndexDict:

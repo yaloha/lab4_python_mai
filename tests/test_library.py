@@ -1,5 +1,5 @@
 import pytest
-from src.internal import Book, Library
+from src.internal import Book, Library, EBook
 
 
 class TestLibrary:
@@ -69,3 +69,28 @@ class TestLibrary:
         library.update_indexes()
         assert repr(library) == "books=1, indexed=1"
         assert book in library.search_by_author("Автор")
+
+
+    def test_add_ebook_to_lib(self):
+        library = Library()
+        ebook = EBook("1984", "Оруэлл", 1949, "Антиутопия", 123456, 2, 123, "pdf")
+
+        result = library.add_book(ebook)
+        assert result is True
+        assert len(library) == 1
+        assert ebook in library
+        assert repr(library) == "books=1, indexed=1"
+
+    def test_search_ebook_by_author(self):
+        library = Library()
+        ebook1 = EBook("Книга1", "Автор1", 2000, "Жанр1", 111111, 1, 200, "epub")
+        ebook2 = EBook("Книга2", "Автор1", 2001, "Жанр2", 222222, 2, 300, "pdf")
+        book3 = Book("Книга3", "Автор2", 2000, "Жанр3", 333333)
+
+        library.add_book(ebook1)
+        library.add_book(ebook2)
+        library.add_book(book3)
+
+        author_results = library.search_by_author("Автор1")
+        assert len(author_results) == 2
+        assert all(isinstance(b, EBook) for b in author_results)
