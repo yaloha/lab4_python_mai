@@ -79,7 +79,7 @@ class IndexDict:
 
         if book.genre in self.genre_index:
             genre_books = self.genre_index[book.genre]
-            genre_books[:] = [b for b in genre_books if b.genre != book.genre]
+            genre_books[:] = [b for b in genre_books if b.isbn != book.isbn]
             if not genre_books:
                 del self.genre_index[book.genre]
 
