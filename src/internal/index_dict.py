@@ -1,14 +1,14 @@
-from books import Book
+from internal import Book
 
 class IndexDict:
     def __init__(self) -> None:
         """Инициализация индексов"""
-        self._isbn_index: Dict[int, Book] = {}
-        self._author_index: Dict[str, List[Book]] = {}
-        self._year_index: Dict[int, List[Book]] = {}
-        self._genre_index: Dict[str, List[Book]] = {}
+        self._isbn_index: dict[int, Book] = {}
+        self._author_index: dict[str, list[Book]] = {}
+        self._year_index: dict[int, list[Book]] = {}
+        self._genre_index: dict[str, list[Book]] = {}
 
-    def __getitem__(self, key: Union[int, str]) -> Union[Book, List[Book]]:
+    def __getitem__(self, key: int | str) -> Book | list[Book]:
         """Получение книг по ключу (isbn, автор или год)"""
         if isinstance(key, int):
             if key in self._isbn_index:
@@ -33,7 +33,7 @@ class IndexDict:
         """Количество уникальных книг по isbn"""
         return len(self._isbn_index)
 
-    def __iter__(self) -> Iterator[int]:
+    def __iter__(self):
         """Итерация по isbn книг"""
         return iter(self._isbn_index)
 

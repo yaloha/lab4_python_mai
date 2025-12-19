@@ -1,11 +1,11 @@
-from books import Book
+from internal import Book
 
 class BookCollection:
-    def __init__(self, books: List[Book] = None) -> None:
+    def __init__(self, books: list[Book] = None) -> None:
         """Инициализация коллекции книг"""
         self._books = books.copy() if books else []
 
-    def __getitem__(self, item: Union[int, slice]) -> Union[Book, BookCollection]:
+    def __getitem__(self, item: int | slice) -> "Book | BookCollection":
         """Получение по номеру айтема или слайсу"""
         if isinstance(item, slice):
             return BookCollection(self._books[item])

@@ -9,7 +9,7 @@ class Book:
 
     def __str__(self) -> str:
         """Возвращение строки с информацией об книге"""
-        return f'"{self.title}" by {self._author} ({self._year})'
+        return f'"{self._title}" by {self._author} ({self._year})'
 
     def __hash__(self) -> hash:
         """Хэширование книг"""
@@ -17,13 +17,13 @@ class Book:
 
     def __repr__(self) -> str:
         """Подробная информация об книге"""
-        return f'Book({self.title}, {self._author}, {self._year}, {self._genre}, {self._isbn})'
+        return f'Book({self._title}, {self._author}, {self._year}, {self._genre}, {self._isbn})'
 
-    def __eq__(self, other: Book) -> bool:
+    def __eq__(self, other: "Book") -> bool:
         """Сравнение книг"""
         if not isinstance(other, Book):
             return False
-        return self._isbn == other.isbn
+        return self._isbn == other._isbn
 
 
 class EBook(Book):
@@ -35,7 +35,7 @@ class EBook(Book):
         self._file_ext = file_ext
         self._how_much_read = 0
 
-    def progress(self, read_pages: int) -> int:
+    def progress(self, read_pages: int) -> None:
         """Обновление количества прочитанных страниц"""
         self._how_much_read = read_pages
 

@@ -1,3 +1,4 @@
+from internal import Book, IndexDict, BookCollection
 class Library:
     def __init__(self) -> None:
         """Инициализация библиотеки с коллекцией книг и индексами"""
@@ -14,7 +15,7 @@ class Library:
 
     def __repr__(self) -> str:
         """Выводит количество книг и проиндексированных книг"""
-        return f"Library: books={len(self._books)}, indexed={len(self._indexes)}"
+        return f"books={len(self._books)}, indexed={len(self._indexes)}"
 
     def add_book(self, book: Book) -> bool:
         """Добавление книги в библиотеку (false сли уже есть)"""
@@ -48,7 +49,7 @@ class Library:
         except KeyError:
             return BookCollection()
 
-    def search_by_isbn(self, isbn: int) -> Optional[Book]:
+    def search_by_isbn(self, isbn: int) -> Book | None:
         """Поиск книги по isbn"""
         try:
             return self._indexes[isbn]
@@ -67,3 +68,8 @@ class Library:
         """Реализация добавления книги через +"""
         self.add_book(book)
         return self
+
+    def update_indexes(self) -> None:
+        self._indexes = IndexDict()
+        for book in self._books:
+            self._indexes.add_book(book)

@@ -1,5 +1,4 @@
-from src.power import power_function
-from src.constants import SAMPLE_CONSTANT
+from simulation import run_simulation
 
 
 def main() -> None:
@@ -8,13 +7,7 @@ def main() -> None:
     :return: Данная функция ничего не возвращает
     """
 
-    target, degree = map(int, input("Введите два числа разделенные пробелом: ").split(" "))
-
-    result = power_function(target=target, power=degree)
-
-    print(result)
-
-    print(SAMPLE_CONSTANT)
+    run_simulation(steps=500, seed=42)
 
 if __name__ == "__main__":
     main()
