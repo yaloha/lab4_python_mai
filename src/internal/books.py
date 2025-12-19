@@ -73,7 +73,7 @@ class EBook(Book):
 
     def progress(self, read_pages: int) -> None:
         """Обновление количества прочитанных страниц"""
-        self._how_much_read = read_pages
+        self._how_much_read += read_pages
 
     def __str__(self) -> str:
         """Возвращение строки с информацией об электронной книге"""
