@@ -1,4 +1,4 @@
-from internal import Book
+from src.internal import Book
 
 class BookCollection:
     def __init__(self, books: list[Book] = None) -> None:

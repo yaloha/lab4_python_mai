@@ -1,4 +1,4 @@
-from internal import Book, IndexDict, BookCollection
+from src.internal import Book, IndexDict, BookCollection
 class Library:
     def __init__(self) -> None:
         """Инициализация библиотеки с коллекцией книг и индексами"""

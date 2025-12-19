@@ -7,6 +7,26 @@ class Book:
         self._genre = genre
         self._isbn = isbn
 
+    @property
+    def title(self) -> str:
+        return self._title
+
+    @property
+    def author(self) -> str:
+        return self._author
+
+    @property
+    def year(self) -> int:
+        return self._year
+
+    @property
+    def genre(self) -> str:
+        return self._genre
+
+    @property
+    def isbn(self) -> int:
+        return self._isbn
+
     def __str__(self) -> str:
         """Возвращение строки с информацией об книге"""
         return f'"{self._title}" by {self._author} ({self._year})'
@@ -34,6 +54,22 @@ class EBook(Book):
         self._pages = pages
         self._file_ext = file_ext
         self._how_much_read = 0
+
+    @property
+    def size(self) -> int:
+        return self._size
+
+    @property
+    def pages(self) -> int:
+        return self._pages
+
+    @property
+    def file_ext(self) -> int:
+        return self._file_ext
+
+    @property
+    def how_much_read(self) -> int:
+        return self._how_much_read
 
     def progress(self, read_pages: int) -> None:
         """Обновление количества прочитанных страниц"""

@@ -7,7 +7,8 @@ def main() -> None:
     :return: Данная функция ничего не возвращает
     """
 
-    run_simulation(steps=500, seed=42)
+    run_simulation(steps=500, seed=3974)
+
 
 if __name__ == "__main__":
     main()
